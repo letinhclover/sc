@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sống Chuẩn</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sống Chuẩn">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%23101a22'/%3E%3Ccircle cx='256' cy='256' r='180' fill='none' stroke='%236fd3b0' stroke-width='32' stroke-dasharray='800' stroke-dashoffset='150'/%3E%3Cpath d='M200 260 L240 300 L320 210' fill='none' stroke='%236fd3b0' stroke-width='36' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22S%E1%BB%91ng%20Chu%E1%BA%A9n%22%2C%22short_name%22%3A%22S%E1%BB%91ng%20Chu%E1%BA%A9n%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23101a22%22%2C%22theme_color%22%3A%22%23101a22%22%7D">
+<style>
+:root{--bg:#101a22;--card:#17242e;--tx:#e9f0f5;--mu:#93a6b5;--ac:#6fd3b0;--bd:#263745;--wn:#f0b45a;--dn:#eb5757;--on:#0c1a14;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#f3f7f9;--card:#ffffff;--tx:#14212b;--mu:#587082;--ac:#0f8f69;--bd:#dce5ea;--wn:#a96a0c;--dn:#d93025;--on:#ffffff}
+:root[data-theme="dark"]{--bg:#101a22;--card:#17242e;--tx:#e9f0f5;--mu:#93a6b5;--ac:#6fd3b0;--bd:#263745;--wn:#f0b45a;--dn:#eb5757;--on:#0c1a14}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+#app{max-width:480px;margin:0 auto;padding:16px 16px 96px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+h1{font-size:15px;font-weight:700;color:var(--mu);margin:0;text-transform:uppercase;letter-spacing:.5px}
+h2{font-size:17px;margin:22px 0 10px;display:flex;align-items:center;justify-content:space-between}
+.big{font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-1.5px}.big small{font-size:22px;font-weight:500;color:var(--mu);margin-left:4px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin:12px 0}
+.mu{color:var(--mu);font-size:13px}.up{color:var(--wn);font-weight:700}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:10px 0 6px}.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+.row{display:flex;gap:10px;align-items:center}.row>*{flex:1;min-width:0}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:4px 0 10px}
+button{font:inherit;border:0;border-radius:12px;padding:13px 16px;background:var(--ac);color:var(--on);font-weight:700;cursor:pointer}
+button.g{background:transparent;color:var(--tx);border:1px solid var(--bd)}button.w{background:transparent;color:var(--wn);border:1px solid var(--wn)}
+.btn-theme{padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--bd);color:var(--tx);cursor:pointer}
+label.hab{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--bd);font-size:15px}label.hab:first-of-type{border-top:0}
+label.hab input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--ac)}
+.err{color:var(--wn);font-size:13px;min-height:18px;margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 4px;text-align:left;border-top:1px solid var(--bd)}th{color:var(--mu);font-weight:500;border-top:0}
+summary{cursor:pointer;color:var(--ac);font-weight:600}svg{width:100%;height:auto;display:block}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:99}
+nav button{flex:1;background:transparent;color:var(--mu);border-radius:0;padding:12px 1px;font-weight:600;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button.on{color:var(--ac);font-weight:700}nav button span.icon{font-size:18px}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;background:var(--bd);color:var(--tx)}
+.tag.alert{background:rgba(240,180,90,.2);color:var(--wn)}.tag.good{background:rgba(111,211,176,.2);color:var(--ac)}
+.tip-box{background:rgba(111,211,176,.08);border-left:3px solid var(--ac);padding:10px 12px;border-radius:0 10px 10px 0;margin:8px 0;font-size:13px}
+.bad-box{background:rgba(235,87,87,.08);border-left:3px solid var(--dn);padding:10px 12px;border-radius:0 10px 10px 0;margin:8px 0;font-size:13px}
+.score-badge{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(111,211,176,.15);border:2px solid var(--ac);color:var(--ac);font-weight:800;font-size:18px}
+</style></head><body><div id="app"></div>
+<script>
+const K='songchuan_v31',$=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0');
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),today=()=>ymd(new Date());
+const sd=k=>k?k.split('-').reverse().join('/'):'';
+const WD=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
+const dl=k=>WD[new Date(k+'T12:00:00').getDay()]+', '+sd(k);
+const addDays=(s,n)=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return ymd(d)};
+const HAB={water:'Uống đủ 2.3L nước lọc',veg:'Đĩa ăn ngập rau xanh ở 2 bữa',walk:'Đi bộ / Vận động > 30 phút',early:'Ăn xong trước 20h tối'};
+const LAB=[['a1c','HbA1c','%',0,5.6],['glu','Đường huyết đói','mg/dL',70,99],['tg','Triglycerid','mg/dL',0,149],['tc','Cholesterol','mg/dL',0,199],['ldl','LDL','mg/dL',0,129],['hdl','HDL','mg/dL',60,999],['alt','ALT (men gan)','U/L',0,45],['ast','AST (men gan)','U/L',0,37],['ggt','GGT','U/L',0,55],['cre','Creatinin','mg/dL',.6,1.2],['ua','Acid uric','mg/dL',3.7,7],['vd','Vitamin D','ng/mL',30,100]];
+const DEF=()=>({v:3.1,dob:'1986-12-16',h:160,tg:60,sw:65,sd:'2026-10-04',eat:['11:00','20:00'],
+ note:'Không bia rượu. Ăn 2 bữa/ngày, thói quen nhiều thịt ít rau. Lái xe ~100 phút/ngày, ít vận động. Ngủ 0h-7h + ngủ trưa 1-2h, có ngáy. Đang tập trung giảm mỡ nội tạng và hạ Acid Uric.',
+ log:{'2026-10-04':{w:65,b:86,steps:null,act:null,h:[]}},
+ labs:[{d:'2026-08-30',v:{a1c:5.9,glu:91,tg:240,tc:227,ldl:135,hdl:45,alt:34,ast:25,ggt:43,cre:.98,ua:7.1,vd:28}}]});
+
+let S=null,tab='h',bad=false,del=false,curDate=today();
+
+// Bộ nhớ Theme Sáng / Tối
+let theme = localStorage.getItem('sc_theme') || 'dark';
+function applyTheme(t){
+  theme = t;
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('sc_theme', t);
+}
+applyTheme(theme);
+function toggleTheme(){applyTheme(theme==='dark'?'light':'dark');render()}
+
+try{
+  let raw=localStorage.getItem(K)||localStorage.getItem('songchuan_v1')||localStorage.getItem('canbang_v26');
+  S=JSON.parse(raw);
+}catch(e){}
+const valid=o=>!!(o&&o.log&&o.labs&&o.h>0&&o.dob&&o.eat);
+if(!valid(S))S=DEF();else S.v=3.1;
+
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S));bad=false}catch(e){bad=true}};
+
+// Hàm bóc tách số thông minh: Xử lý chuỗi "2.540 bước", "46,4 kcal" thành số chuẩn
+function parseSmartNum(val){
+  if(val==null||val==='')return null;
+  let s=String(val).trim().replace(/,/g,'.');
+  let match=s.match(/-?\d+(\.\d+)?/);
+  return match?parseFloat(match[0]):null;
+}
+
+// Cổng tiếp nhận Apple Shortcuts: ?steps=...&act=...&w=...
+(function checkShortcuts(){
+  const p=new URLSearchParams(window.location.search);
+  if(p.has('steps')||p.has('act')||p.has('w')){
+    const d=today(),L=S.log[d]||(S.log[d]={h:[]});
+    if(p.has('steps'))L.steps=parseSmartNum(p.get('steps'));
+    if(p.has('act'))L.act=parseSmartNum(p.get('act'));
+    if(p.has('w'))L.w=Math.round(parseSmartNum(p.get('w'))*10)/10;
+    save();
+    window.history.replaceState({},document.title,window.location.pathname);
+  }
+})();
+
+const ds=()=>Object.keys(S.log).filter(k=>S.log[k].w).sort();
+const W=()=>{const k=ds();return k.length?S.log[k[k.length-1]].w:S.sw};
+const lastB=()=>{const k=Object.keys(S.log).filter(k=>S.log[k].b).sort();return k.length?S.log[k[k.length-1]].b:null};
+const age=()=>{const d=new Date(),b=new Date(S.dob);let a=d.getFullYear()-b.getFullYear();if(d<new Date(d.getFullYear(),b.getMonth(),b.getDate()))a--;return a};
+const bmi=w=>w/((S.h/100)**2);
+const kcal=()=>{const t=(10*W()+6.25*S.h-5*age()+5)*1.2;return Math.max(Math.round((t-Math.min(500,.2*t))/10)*10,1500)};
+function trend(){let e=null;const kAll=ds();if(!kAll.length)return[[today(),S.sw,S.sw]];return kAll.map(k=>{const w=S.log[k].w;e=e==null?w:e+.3*(w-e);return[k,w,e]})}
+function chg(n){const t=trend();if(t.length<2)return null;const L=t[t.length-1],c=addDays(L[0],-n);let b=null;for(const r of t)if(r[0]<=c)b=r;return b?L[2]-b[2]:null}
+const f1=x=>{if(x==null)return '–';const r=Math.round(x*10)/10;return(r>0?'+':r<0?'−':'')+Math.abs(r).toFixed(1)};
+const fl=(r,v)=>v==null?'':v<r[3]?'▼':v>r[4]?'▲':'';
+
+// Tính Điểm Sống Chuẩn hôm nay (0 - 100 điểm)
+function calcScore(d){
+  const L=S.log[d]||{h:[]};let sc=0;
+  sc+=(L.h||[]).length*10; // 40 điểm thói quen
+  if(L.steps>=7000||L.act>=300)sc+=30; // 30 điểm vận động tối đa
+  else if(L.steps>=4000||L.act>=150)sc+=20;
+  else if(L.steps>=2000||L.act>=50)sc+=10;
+  if(L.w)sc+=15; // 15 điểm ghi cân kỷ luật
+  if(L.b)sc+=15; // 15 điểm đo bụng
+  return Math.min(100,sc);
+}
+
+function getForecast(){
+  const c7=chg(7),w=W(),remain=w-S.tg;
+  if(remain<=0)return'<span class="tag good">Đã đạt mục tiêu 60 kg!</span>';
+  if(!c7||c7>=-0.1)return'Duy trì kỷ luật ăn & vận động thêm vài ngày để app dự báo ngày chạm đích.';
+  const weeks=remain/Math.abs(c7),days=Math.round(weeks*7);
+  return `⚡ Dự kiến đạt <b>${S.tg} kg</b> vào ngày <b>${sd(addDays(today(),days))}</b> (còn ~${Math.round(weeks)} tuần với tốc độ ${f1(c7)} kg/tuần).`;
+}
+
+function home(){
+  const d=curDate,L=S.log[d]||{h:[]},w=W(),t=trend(),e=t[t.length-1][2],b=lastB(),k=kcal(),
+  p=Math.max(0,Math.min(1,(S.sw-e)/(S.sw-S.tg))),score=calcScore(d);
+
+  return `<div class="header">
+    <h1>SỐNG CHUẨN · ${dl(d)}</h1>
+    <button class="btn-theme" onclick="toggleTheme()">${theme==='dark'?'☀️ Sáng':'🌙 Tối'}</button>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div class="big">${w.toFixed(1)}<small>kg</small></div>
+        <div class="mu">Mục tiêu ${S.tg} kg · 7 ngày qua: <b>${f1(chg(7))} kg</b></div>
+      </div>
+      <div style="text-align:center">
+        <div class="score-badge">${score}</div>
+        <div class="mu" style="font-size:11px;margin-top:3px">Điểm chuẩn</div>
+      </div>
+    </div>
+    <div class="bar"><i style="width:${Math.round(p*100)}%"></i></div>
+    <div class="mu" style="font-size:12px;margin-top:6px">${getForecast()}</div>
+  </div>
+
+  <div class="card">
+    <div class="row mu" style="margin-bottom:6px"><span>Nhật ký ngày</span><span style="text-align:right">${d===today()?'(Hôm nay)':'(Ngày cũ)'}</span></div>
+    <input id="idate" type="date" max="${today()}" value="${d}" onchange="curDate=this.value;render()">
+    <div class="row">
+      <div><div class="mu">Cân nặng (kg)</div><input id="iw" type="number" step="0.1" inputmode="decimal" value="${L.w||''}"></div>
+      <div><div class="mu">Vòng bụng (cm)</div><input id="ib" type="number" step="0.5" inputmode="decimal" value="${L.b||''}"></div>
+    </div>
+    <div class="row">
+      <div><div class="mu">Bước chân</div><input id="ist" type="number" inputmode="numeric" placeholder="Từ Apple Health" value="${L.steps||''}"></div>
+      <div><div class="mu">Vận động (kcal)</div><input id="iact" type="number" step="1" inputmode="decimal" placeholder="Từ Apple Health" value="${L.act||''}"></div>
+    </div>
+    <button style="width:100%" onclick="saveDay()">Ghi nhận số đo</button>
+    <div class="err" id="er"></div>
+  </div>
+
+  <div class="card"><div class="row">
+    <div><div class="mu">BMI châu Á</div><b>${bmi(w).toFixed(1)}</b></div>
+    <div><div class="mu">Bụng/Cao</div><b>${b?(b/S.h).toFixed(2):'–'}</b> ${b&&b/S.h>0.5?'<span class="tag alert">Mỡ bụng</span>':''}</div>
+    <div><div class="mu">Calo nạp tối đa</div><b>${k}</b> kcal</div>
+  </div></div>
+
+  <div class="card">
+    <div class="mu">Đồng hồ nhịn ăn sinh học 16:8 (${S.eat[0]} – ${S.eat[1]})</div>
+    <div id="iff" style="margin-top:4px"></div>
+  </div>
+
+  <h2>4 Thói quen kỷ luật</h2>
+  <div class="card">${Object.keys(HAB).map(id=>`<label class="hab"><input type="checkbox" ${(L.h||[]).includes(id)?'checked':''} onchange="tick('${id}')">${HAB[id]}</label>`).join('')}</div>`}
+
+function food(){
+  const w=W(),pTarget=Math.round(w*1.25),waterTarget=(w*0.035).toFixed(1);
+  return `<div class="header"><h1>ĐỊNH HƯỚNG DINH DƯỠNG</h1><button class="btn-theme" onclick="toggleTheme()">${theme==='dark'?'☀️ Sáng':'🌙 Tối'}</button></div>
+  <div class="card">
+    <div style="font-weight:700;font-size:16px;margin-bottom:4px">Khẩu phần tối ưu cho bạn (${w.toFixed(1)} kg)</div>
+    <div class="mu">Thiết kế riêng: Giảm mỡ nội tạng, hạ Triglycerid (240) và đào thải Acid Uric (7.1).</div>
+    <div class="row" style="margin-top:14px">
+      <div style="background:var(--bg);padding:12px;border-radius:12px;text-align:center">
+        <div class="mu">Đạm (Protein) sạch</div>
+        <div style="font-size:22px;font-weight:800;color:var(--ac);margin:4px 0">${pTarget}g<small style="font-size:13px;color:var(--mu)">/ngày</small></div>
+        <div class="mu" style="font-size:11px">Ưu tiên ức gà, cá nạc, đậu hũ</div>
+      </div>
+      <div style="background:var(--bg);padding:12px;border-radius:12px;text-align:center">
+        <div class="mu">Nước lọc tối thiểu</div>
+        <div style="font-size:22px;font-weight:800;color:var(--ac);margin:4px 0">${waterTarget}L<small style="font-size:13px;color:var(--mu)">/ngày</small></div>
+        <div class="mu" style="font-size:11px">Đào thải acid uric qua thận</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Nên ăn & uống gì?</h2>
+  <div class="card">
+    <div class="tip-box"><b>🥬 Rau xanh chiếm 1/2 đĩa ăn:</b> Bông cải xanh, dưa leo, bí đao, rau ngót, cải ngọt. Chất xơ giúp cản hấp thu mỡ và đường.</div>
+    <div class="tip-box"><b>🐟 Đạm sạch an toàn cho Acid Uric:</b> Ức gà phi lê, trứng luộc, đậu phụ luộc, cá đồng hoặc cá biển nạc.</div>
+    <div class="tip-box"><b>🍠 Tinh bột chậm (1/4 đĩa):</b> Gạo lứt, khoai lang luộc, ngô, yến mạch. Giúp hạ Triglycerid bền vững.</div>
+    <div class="tip-box"><b>💧 Thức uống tốt:</b> Nước lọc, trà xanh loãng, cà phê đen nguyên chất không đường (hỗ trợ hạ men gan & acid uric).</div>
+  </div>
+
+  <h2>Không nên hoặc hạn chế tối đa</h2>
+  <div class="card">
+    <div class="bad-box"><b>🚫 Thịt đỏ & Nội tạng:</b> Thịt bò, dê, chó, lòng mề (nhiều purin gây bùng phát Gút & tăng Uric 7.1).</div>
+    <div class="bad-box"><b>🚫 Nước ép ngọt & Trà sữa:</b> Fructose công nghiệp chuyển hóa thẳng thành mỡ gan và đẩy vọt Triglycerid. Hãy ăn trái cây nguyên quả.</div>
+    <div class="bad-box"><b>🚫 Ăn tối sau 20h:</b> Ăn muộn kết hợp lái xe ngồi lâu làm calo tích tụ vào mỡ bụng và làm tăng ngáy ngủ ban đêm.</div>
+  </div>`}
+
+function hist(){
+  const t=trend(),ks=Object.keys(S.log).sort().reverse().slice(0,14),b0=(S.log[S.sd]||{}).b,b1=lastB();let ch='';
+  if(t.length>1){
+    const r=t.slice(-60),Wd=320,H=140,P=14,x0=new Date(r[0][0]).getTime(),x1=new Date(r[r.length-1][0]).getTime(),al=r.flatMap(a=>[a[1],a[2]]),mn=Math.min(...al)-.5,mx=Math.max(...al)+.5;
+    const X=k=>P+(x1==x0?0:(new Date(k).getTime()-x0)/(x1-x0))*(Wd-2*P),Y=v=>H-P-(v-mn)/(mx-mn)*(H-2*P);
+    ch=`<svg viewBox="0 0 ${Wd} ${H}"><polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${r.map(a=>X(a[0])+','+Y(a[2])).join(' ')}"/>${r.map(a=>`<circle cx="${X(a[0])}" cy="${Y(a[1])}" r="3" fill="var(--mu)"/>`).join('')}</svg><div class="row mu"><span>${sd(r[0][0])}</span><span style="text-align:right">${sd(r[r.length-1][0])}</span></div>`}
+  else ch='<div class="mu">Cần ít nhất 2 lần nhập cân để vẽ biểu đồ xu hướng.</div>';
+  
+  const LS=[...S.labs].sort((a,b)=>a.d<b.d?-1:1),A=LS[LS.length-1]||{v:{}},B=LS[LS.length-2];
+  const getRatio=x=>x&&x.v.tg&&x.v.hdl?(x.v.tg/x.v.hdl).toFixed(2):null;
+  const rA=getRatio(A),rB=getRatio(B);
+
+  return `<div class="header"><h1>LỊCH SỬ & CHỈ SỐ MÁU</h1><button class="btn-theme" onclick="toggleTheme()">${theme==='dark'?'☀️ Sáng':'🌙 Tối'}</button></div>
+  <div class="card">${ch}</div>
+  <div class="card"><div class="mu">Từ ngày bắt đầu (${sd(S.sd)})</div>Cân nặng <b>${f1(W()-S.sw)} kg</b>${b0&&b1?` · Vòng bụng <b>${f1(b1-b0)} cm</b>`:''}</div>
+  
+  <h2>14 ngày vừa qua</h2>
+  <div class="card" style="overflow-x:auto"><table>
+    <tr><th>Ngày</th><th>Cân</th><th>Bụng</th><th>Bước</th><th>Vận động</th><th>Điểm</th></tr>
+    ${ks.map(k=>{const L=S.log[k];return`<tr><td><b>${sd(k)}</b></td><td>${L.w||'–'}</td><td>${L.b||'–'}</td><td>${L.steps||'–'}</td><td>${L.act?L.act+' kcal':'–'}</td><td><b>${calcScore(k)}</b></td></tr>`}).join('')}
+  </table></div>
+
+  <h2>Xét nghiệm chuyển hóa</h2>
+  <div class="card"><table>
+    <tr><th>Chỉ số</th><th>${B?sd(B.d):'Lần trước'}</th><th>${sd(A.d)}</th></tr>
+    ${LAB.map(r=>{const a=A.v[r[0]],b=B&&B.v[r[0]];return`<tr><td>${r[1]} <span class="mu">${r[2]}</span></td><td>${b??'–'}</td><td class="${fl(r,a)?'up':''}"><b>${a??'–'}</b> ${fl(r,a)}</td></tr>`}).join('')}
+    <tr style="border-top:2px solid var(--bd)"><td><b>Tỷ số TG/HDL</b> <span class="mu">(kháng insulin)</span></td><td>${rB||'–'}</td><td class="${rA>3?'up':''}"><b>${rA||'–'}</b> ${rA>3?'▲ (nguy cơ cao)':rA<2?'(tốt)':''}</td></tr>
+  </table></div>
+
+  <details class="card"><summary>+ Thêm kết quả xét nghiệm máu mới</summary>
+    <div style="margin-top:10px"><label class="mu">Ngày lấy mẫu</label><input id="ld" type="date" max="${today()}" value="${today()}"></div>
+    <div class="row" style="flex-wrap:wrap">${LAB.map(r=>`<div style="flex:1 1 45%"><label class="mu">${r[1]} (${r[2]})</label><input id="l_${r[0]}" type="number" step="any" inputmode="decimal"></div>`).join('')}</div>
+    <button style="width:100%" onclick="addLab()">Lưu xét nghiệm</button><div class="err" id="le"></div>
+  </details>`}
+
+function rep(){
+  const t=trend(),w=W(),b=lastB(),ks=Object.keys(S.log).sort().slice(-14),LS=[...S.labs].sort((a,b)=>a.d<b.d?-1:1);
+  const A=LS[LS.length-1];
+  const tgHdl=A&&A.v.tg&&A.v.hdl?(A.v.tg/A.v.hdl).toFixed(2):'–';
+  return `# Báo cáo sức khỏe SỐNG CHUẨN (xuất ngày ${sd(today())})
+
+## Hồ sơ cá nhân
+- Nam, ${age()} tuổi, chiều cao: ${S.h} cm
+- Cân nặng hiện tại: ${w.toFixed(1)} kg (Đường xu hướng: ${t[t.length-1][2].toFixed(1)} kg)
+- Mục tiêu: Giảm về ${S.tg} kg, giảm mỡ nội tạng và đưa Acid Uric về < 6.0 mg/dL
+- Khởi điểm (${sd(S.sd)}): ${S.sw} kg, vòng bụng ${(S.log[S.sd]||{}).b||'?'} cm. Hiện tại bụng: ${b||'?'} cm
+- Cửa sổ ăn 16/8: ${S.eat[0]} – ${S.eat[1]}
+- Đặc thù: Lái xe ~100 phút/ngày, ít vận động, ngủ có tiếng ngáy.
+
+## Dữ liệu 14 ngày (ngày | cân | bụng | bước chân | calo vận động | điểm kỷ luật)
+${ks.map(k=>{const L=S.log[k];return`${sd(k)} | ${L.w||'-'} kg | ${L.b||'-'} cm | ${L.steps||'-'} bước | ${L.act||'-'} kcal | Điểm: ${calcScore(k)}/100`}).join('\n')}
+
+## Xét nghiệm máu gần nhất (${A?sd(A.d):'chưa có'})
+${LS.map(x=>`${sd(x.d)}: `+LAB.filter(r=>x.v[r[0]]!=null).map(r=>`${r[1]} ${x.v[r[0]]} ${r[2]}`).join(', ')).join('\n')}
+- Tỷ số Triglycerid / HDL: ${tgHdl} (Ngưỡng cảnh báo đề kháng insulin nếu > 3.0)
+
+## Yêu cầu phân tích y khoa
+Hãy đóng vai trò chuyên gia y học lối sống:
+1. Đánh giá tốc độ giảm mỡ và tỷ số TG/HDL hiện tại.
+2. Gợi ý cụ thể thực đơn ăn trưa và ăn tối phù hợp với người lái xe, vừa chống buồn ngủ vừa hạ Acid Uric và Triglycerid.
+3. Nhận định về triệu chứng ngủ ngáy và biện pháp cải thiện thông khí ban đêm.`}
+
+function repT(){
+  return `<div class="header"><h1>BÁO CÁO CHO AI</h1><button class="btn-theme" onclick="toggleTheme()">${theme==='dark'?'☀️ Sáng':'🌙 Tối'}</button></div>
+  <div class="card">
+  <div class="mu">Ghi chú lối sống & bệnh sử</div>
+  <textarea id="nt" rows="4" onchange="S.note=this.value;save()">${S.note}</textarea>
+  <button style="width:100%" onclick="cp()">Sao chép báo cáo gửi AI</button>
+  <div class="err" id="cm"></div>
+  <textarea id="rp" rows="8" readonly placeholder="Nội dung tóm tắt y khoa sẽ hiện ở đây..."></textarea>
+  <div class="mu">Dán vào ChatGPT, Claude hoặc Gemini để nhận tư vấn chuyên sâu không lộ danh tính.</div>
+  </div>`}
+
+function sett(){
+  return `<div class="header"><h1>CÀI ĐẶT HỆ THỐNG</h1><button class="btn-theme" onclick="toggleTheme()">${theme==='dark'?'☀️ Sáng':'🌙 Tối'}</button></div>
+  <div class="card">
+    <div class="mu">Cửa sổ giờ ăn (Nhịn ăn 16/8)</div>
+    <div class="row"><input id="e1" type="time" value="${S.eat[0]}" onchange="setEat()"><input id="e2" type="time" value="${S.eat[1]}" onchange="setEat()"></div>
+    <div class="err" id="ee"></div>
+    <div class="mu">Cân nặng mục tiêu (kg)</div>
+    <input id="tg" type="number" step="0.5" inputmode="decimal" value="${S.tg}" onchange="setTg()"><div class="err" id="te"></div>
+  </div>
+
+  <h2>Đồng bộ Apple Health (iPhone)</h2>
+  <div class="card">
+    <div class="mu">Đường dẫn dùng cho app <b>Phím tắt (Shortcuts)</b>:</div>
+    <pre style="background:var(--bg);padding:10px;border-radius:8px;font-size:11px;overflow-x:auto;color:var(--ac);word-break:break-all">https://letinhclover.github.io/sc?steps=[Bước]&act=[Calo]&w=[Cân]</pre>
+  </div>
+
+  <h2>Sao lưu & Khôi phục</h2>
+  <div class="card">
+    <div class="row"><button style="width:100%" onclick="exportFile()">Tải tệp sao lưu (.json)</button></div>
+    <div style="margin-top:10px">
+      <div class="mu">Khôi phục từ tệp tin cũ:</div>
+      <input type="file" id="fileIn" accept=".json" onchange="importFile(event)">
+    </div>
+    <div class="err" id="be"></div>
+  </div>
+
+  <div class="card"><button class="w" onclick="delAll()">${del?'Xác nhận: Bấm lần nữa để xóa sạch':'Xóa tất cả dữ liệu'}</button></div>`}
+
+function saveDay(){
+  const w=parseSmartNum($('#iw').value),b=parseSmartNum($('#ib').value),
+        st=parseSmartNum($('#ist').value),act=parseSmartNum($('#iact').value),e=$('#er'),d=curDate;
+  if((w&&!(w>=30&&w<=300))||(b&&!(b>=40&&b<=250))){e.textContent='Cân 30–300 kg, bụng 40–250 cm.';return}
+  const L=S.log[d]||(S.log[d]={h:[]});
+  if(w)L.w=Math.round(w*10)/10;if(b)L.b=b;
+  L.steps=st;L.act=act;
+  save();render();
+  e.style.color='var(--ac)';e.textContent='Đã lưu thành công cho ngày '+sd(d);
+  setTimeout(()=>{if($('#er'))$('#er').textContent=''},2500);
+}
+
+function tick(id){
+  const d=curDate,L=S.log[d]||(S.log[d]={h:[]}),i=L.h.indexOf(id);
+  i<0?L.h.push(id):L.h.splice(i,1);save();render();
+}
+
+function addLab(){
+  const d=$('#ld').value,v={},e=$('#le');LAB.forEach(r=>{const x=$('#l_'+r[0]).value;if(x!=='')v[r[0]]=parseSmartNum(x)});
+  if(!d||!Object.keys(v).length){e.textContent='Chọn ngày và nhập chỉ số.';return}
+  S.labs=S.labs.filter(x=>x.d!==d);S.labs.push({d,v});save();render();
+}
+
+function mkRep(){$('#rp').value=rep();$('#rp').select()}
+function cp(){mkRep();const m=$('#cm'),f=()=>m.textContent='Hãy chọn toàn bộ khung dưới và sao chép.';try{navigator.clipboard.writeText($('#rp').value).then(()=>m.textContent='Đã sao chép vào bộ nhớ tạm!',f)}catch(e){f()}}
+function setEat(){const a=$('#e1').value,b=$('#e2').value;if(!a||!b||a>=b){$('#ee').textContent='Giờ kết thúc phải sau giờ bắt đầu.';return}S.eat=[a,b];$('#ee').textContent='';save()}
+function setTg(){const v=+$('#tg').value;if(!(v>=50&&v<W())){$('#te').textContent='Mục tiêu hợp lý từ 50 kg và nhỏ hơn cân hiện tại.';return}S.tg=v;$('#te').textContent='';save()}
+
+function exportFile(){
+  const dataStr="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(S,null,2));
+  const a=document.createElement('a');a.setAttribute("href",dataStr);a.setAttribute("download","songchuan_backup_"+today()+".json");a.click();a.remove();
+}
+
+function importFile(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const o=JSON.parse(ev.target.result);
+      if(!valid(o))throw 0;
+      S=o;save();tab='h';render();alert('Khôi phục dữ liệu thành công!');
+    }catch(err){$('#be').textContent='Tệp tin không đúng chuẩn hoặc lỗi cấu trúc.';}
+  };
+  reader.readAsText(file);
+}
+
+function delAll(){if(!del){del=true;render();return}try{localStorage.removeItem(K)}catch(e){}S=DEF();save();del=false;tab='h';render()}
+function setTab(t){tab=t;render();window.scrollTo(0,0)}
+
+function tickIF(){
+  const el=$('#iff');if(!el)return;
+  const n=new Date(),m=n.getHours()*60+n.getMinutes(),[a,b]=S.eat.map(x=>{const[h,mm]=x.split(':').map(Number);return h*60+mm}),f=x=>Math.floor(x/60)+'h '+pad(x%60)+'p';
+  if(m>=a&&m<b){
+    el.innerHTML=`<b style="color:var(--ac)">Đang trong cửa sổ ăn</b> · Còn <b>${f(b-m)}</b> nữa tới giờ nhịn tối`;
+  }else{
+    const fastMin=m>=b?m-b:1440-b+m,fastH=fastMin/60;let stage='Đang tiêu hóa & hạ đường huyết';
+    if(fastH>=14)stage='<span class="tag good">Autophagy (Dọn dẹp tế bào & Tăng nhạy insulin)</span>';
+    else if(fastH>=12)stage='<span class="tag alert">Bắt đầu đốt mỡ thừa 🔥</span>';
+    el.innerHTML=`<b>Đang nhịn được ${f(fastMin)}</b> (${stage})<br><span class="mu">Còn ${f(m<a?a-m:1440-m+a)} nữa tới bữa ăn đầu tiên lúc ${S.eat[0]}</span>`;
+  }
+}
+
+function render(){
+  $('#app').innerHTML=({h:home,f:food,l:hist,r:repT,s:sett}[tab])()+
+  `<nav>
+    <button class="${tab=='h'?'on':''}" onclick="setTab('h')"><span class="icon">⚡</span>Hôm nay</button>
+    <button class="${tab=='f'?'on':''}" onclick="setTab('f')"><span class="icon">🥗</span>Ăn gì</button>
+    <button class="${tab=='l'?'on':''}" onclick="setTab('l')"><span class="icon">📈</span>Lịch sử</button>
+    <button class="${tab=='r'?'on':''}" onclick="setTab('r')"><span class="icon">🤖</span>Báo cáo AI</button>
+    <button class="${tab=='s'?'on':''}" onclick="setTab('s')"><span class="icon">⚙️</span>Cài đặt</button>
+  </nav>`;
+  tickIF();
+}
+
+setInterval(tickIF,30000);render();
+</script></body></html>
